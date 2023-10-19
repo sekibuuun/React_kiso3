@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  const [inputEmail, setInputEmail] = useState("");
+  const [result, setResult] = useState("未入力");
+
+  const onButton = () => {
+    if (inputEmail === "") {
+      setResult("エラー");
+      return;
+    }
+    if (!inputEmail.match(/.+@.+\..+/)) {
+      setResult("エラー");
+      return;
+    }
+    setResult(inputEmail);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        type="email"
+        id="input-email"
+        required
+        value={inputEmail}
+        onChange={(e) => setInputEmail(e.target.value)}
+      />
+      <input type="button" id="input-button" value="入力" onClick={onButton} />
+      <div id="result">{result}</div>
     </div>
   );
 }
