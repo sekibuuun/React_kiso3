@@ -6,7 +6,7 @@ function App() {
 
   const onButton = () => {
     if (inputEmail === "") {
-      setResult("エラー");
+      setResult("未入力");
       return;
     }
     if (!inputEmail.match(/.+@.+\..+/)) {
@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <label htmlFor="input-email">メールアドレス</label>
       <input
         type="email"
         id="input-email"
@@ -25,7 +26,7 @@ function App() {
         value={inputEmail}
         onChange={(e) => setInputEmail(e.target.value)}
       />
-      <input type="button" id="input-button" value="入力" onClick={onButton} />
+      <input type="button" id="input-button" value="送信" onClick={onButton} />
       <div id="result">{result}</div>
     </div>
   );
