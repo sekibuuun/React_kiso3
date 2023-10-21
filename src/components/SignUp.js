@@ -27,7 +27,7 @@ const SignUp = () => {
     };
 
     axios
-      .post(`${url}/signup`, data)
+      .post(`${url}/users`, data)
       .then((res) => {
         const token = res.data.token;
         dispatch(signIn());
