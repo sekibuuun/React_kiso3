@@ -45,7 +45,9 @@ const LogIn = () => {
     reset();
   };
 
-  if (auth) return <Navigate to="/" />;
+  console.log("aaa");
+  console.log(auth);
+  // if (auth) return <Navigate to="/" />;
 
   return (
     <div>
@@ -54,7 +56,9 @@ const LogIn = () => {
         <h2>サインイン</h2>
         <p className="error-message">{errorMessage}</p>
         <form className="signin-form" onSubmit={handleSubmit(onSubmit)}>
-          <label className="email-label">メールアドレス</label>
+          <label className="email-label" htmlFor="input-email">
+            メールアドレス
+          </label>
           <br />
           <input
             {...register("email", {
@@ -68,13 +72,16 @@ const LogIn = () => {
                 message: "メールアドレスの形式で入力してください。",
               },
             })}
+            type="text"
             onChange={handleEmailChange}
             className="email-input"
             id="input-email"
           />
           {errors.email && <span>{errors.email.message}</span>}
           <br />
-          <label className="password-label">パスワード</label>
+          <label className="password-label" htmlFor="input-password">
+            パスワード
+          </label>
           <br />
           <input
             {...register("password", {
@@ -91,6 +98,7 @@ const LogIn = () => {
             onChange={handlePasswordChange}
             className="password-input"
             id="input-password"
+            data-testid="password"
           />
           {errors.password && <span>{errors.password.message}</span>}
           <br />

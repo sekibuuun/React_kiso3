@@ -1,6 +1,6 @@
 import React from "react";
 import { useCookies } from "react-cookie";
-import { useSelector, useDispatch } from "react-redux/es/exports";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "../authSlice";
 import "../styles/header.scss";
@@ -13,7 +13,7 @@ export const Header = () => {
   const handleSignOut = () => {
     dispatch(signOut());
     removeCookie("token");
-    navigation("/signin");
+    navigation("/login");
   };
 
   return (
