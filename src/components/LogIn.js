@@ -45,9 +45,7 @@ const LogIn = () => {
     reset();
   };
 
-  console.log("aaa");
-  console.log(auth);
-  // if (auth) return <Navigate to="/" />;
+  if (auth) return <Navigate to="/" />;
 
   return (
     <div>
@@ -77,7 +75,9 @@ const LogIn = () => {
             className="email-input"
             id="input-email"
           />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="email-error">{errors.email.message}</span>
+          )}
           <br />
           <label className="password-label" htmlFor="input-password">
             パスワード
@@ -100,7 +100,9 @@ const LogIn = () => {
             id="input-password"
             data-testid="password"
           />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <span className="password-error">{errors.password.message}</span>
+          )}
           <br />
           <button type="submit" className="signin-button" id="input-button">
             サインイン
