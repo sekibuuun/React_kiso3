@@ -20,9 +20,9 @@ export const Header = () => {
     <header className="header">
       <h1>書籍レビュー</h1>
       {auth ? (
-        <button onClick={handleSignOut} className="sign-out-button">
+        <div onClick={handleSignOut} className="sign-out-button">
           サインアウト
-        </button>
+        </div>
       ) : (
         <></>
       )}
