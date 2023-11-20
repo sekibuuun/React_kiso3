@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
+import { Pagenation } from "../components/Pagenation";
 import { url } from "../const";
 import "../styles/home.scss";
 
@@ -9,11 +10,17 @@ const Home = () => {
   const [lists, setLists] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
+  const [pageNumber, setPageNumber] = useState(0);
+  const listsPerPage = 10;
+
   useEffect(() => {
     axios
       .get(`${url}/books`, {
         headers: {
           authorization: `Bearer ${cookies.token}`,
+        },
+        params: {
+          offset: String(pageNumber * listsPerPage),
         },
       })
       .then((res) => {
@@ -22,7 +29,15 @@ const Home = () => {
       .catch((err) => {
         setErrorMessage(`リストの取得に失敗しました。${err}`);
       });
-  }, []);
+  }, [pageNumber]);
+
+  const nextPage = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  };
+
+  const prevPage = () => {
+    setPageNumber((prevPageNumber) => Math.max(prevPageNumber - 1, 0));
+  };
 
   return (
     <div>
@@ -46,6 +61,11 @@ const Home = () => {
             </div>
           </div>
         ))}
+        <Pagenation
+          pageNumber={pageNumber}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
       </div>
     </div>
   );
