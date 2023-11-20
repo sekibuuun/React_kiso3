@@ -70,19 +70,19 @@ const SignUp = () => {
         axios.post(`${url}/uploads`, formData, { headers });
         dispatch(signIn());
         setCookie("token", token);
-        navigation("/");
+        navigation("/home");
       })
       .catch((err) => {
         setErrorMessage(`サインアップに失敗しました。 ${err}`);
       });
-
-    if (auth) return <Navigate to="/" />;
   };
 
   const onSubmit = () => {
     onSignUp();
     reset();
   };
+
+  if (auth) return <Navigate to="/home" />;
 
   return (
     <div>

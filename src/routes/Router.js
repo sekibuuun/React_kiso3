@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { SignUp } from "../components/SignUp";
 import { LogIn } from "../components/LogIn";
 import { Home } from "../components/Home";
+import { Root } from "../components/Root";
 
 export const Router = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
@@ -13,7 +14,11 @@ export const Router = () => {
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        {auth && <Route path="/" element={<Home />} />}
+        {auth ? (
+          <Route path="/home" element={<Home />} />
+        ) : (
+          <Route path="/" element={<Root />} />
+        )}
       </Routes>
     </BrowserRouter>
   );

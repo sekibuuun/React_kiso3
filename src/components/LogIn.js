@@ -33,7 +33,7 @@ const LogIn = () => {
       .then((res) => {
         setCookie("token", res.data.token);
         dispatch(signIn());
-        navigation("/");
+        navigation("/home");
       })
       .catch((err) => {
         setErrorMessage(`サインインに失敗しました。${err}`);
@@ -45,7 +45,7 @@ const LogIn = () => {
     reset();
   };
 
-  if (auth) return <Navigate to="/" />;
+  if (auth) return <Navigate to="/home" />;
 
   return (
     <div>

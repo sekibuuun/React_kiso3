@@ -15,7 +15,24 @@ $blue: #242f9b;
     margin: auto 0 auto 25px;
   }
 
-  .sign-out-button {
+  .after-signin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    .user-name {
+      margin: 3px 25px 0 auto;
+    }
+    .sign-out-button {
+      cursor: pointer;
+      border-bottom: 1px solid $white;
+      color: $white;
+      margin: auto 25px auto auto;
+    }
+  }
+
+  .sign-in-button {
     cursor: pointer;
     border-bottom: 1px solid $white;
     color: $white;
