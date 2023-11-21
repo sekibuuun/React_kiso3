@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
@@ -10,7 +11,7 @@ const Home = () => {
   const [lists, setLists] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
-  const [pageNumber, setPageNumber] = useState(0);
+  const pageNumber = useSelector((state) => state.pageCounter.pageNumber);
   const listsPerPage = 10;
 
   useEffect(() => {
@@ -30,14 +31,6 @@ const Home = () => {
         setErrorMessage(`リストの取得に失敗しました。${err}`);
       });
   }, [pageNumber]);
-
-  const nextPage = () => {
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
-  };
-
-  const prevPage = () => {
-    setPageNumber((prevPageNumber) => Math.max(prevPageNumber - 1, 0));
-  };
 
   return (
     <div>
@@ -61,11 +54,7 @@ const Home = () => {
             </div>
           </div>
         ))}
-        <Pagenation
-          pageNumber={pageNumber}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
+        <Pagenation />
       </div>
     </div>
   );
