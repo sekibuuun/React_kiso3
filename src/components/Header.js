@@ -6,6 +6,7 @@ import { signOut } from "../authSlice";
 import "../styles/header.scss";
 import axios from "axios";
 import { url } from "../const";
+import { EditProfile } from "./EditProfile";
 
 export const Header = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
@@ -44,6 +45,9 @@ export const Header = () => {
       {auth ? (
         <div className="after-signin">
           <div className="user-name">{userName}</div>
+          <div onClick={() => navigation("/profile")} className="edit-button">
+            ユーザー情報編集
+          </div>
           <div onClick={handleSignOut} className="sign-out-button">
             サインアウト
           </div>
