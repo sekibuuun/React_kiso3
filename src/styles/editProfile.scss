@@ -1,0 +1,27 @@
+$blue: #242f9b;
+$white: #ffffff;
+
+.edit-profile {
+  width: 500px;
+  margin: 20px auto;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  input {
+    width: 100%;
+    font-size: large;
+    height: 30px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    background-color: $blue;
+    color: $white;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+  }
+}

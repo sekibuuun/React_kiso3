@@ -5,6 +5,7 @@ import { SignUp } from "../components/SignUp";
 import { LogIn } from "../components/LogIn";
 import { Home } from "../components/Home";
 import { Root } from "../components/Root";
+import { EditProfile } from "../components/EditProfile";
 
 export const Router = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
@@ -15,7 +16,10 @@ export const Router = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         {auth ? (
-          <Route path="/home" element={<Home />} />
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<EditProfile />} />
+          </>
         ) : (
           <Route path="/" element={<Root />} />
         )}
