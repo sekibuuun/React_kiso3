@@ -6,13 +6,12 @@ import { signOut } from "../authSlice";
 import "../styles/header.scss";
 import axios from "axios";
 import { url } from "../const";
-import { EditProfile } from "./EditProfile";
 
 export const Header = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
   const dispatch = useDispatch();
   const navigation = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [errorMessage, setErrorMessage] = useState("");
   const [userName, setUserName] = useState("");
 
@@ -23,7 +22,7 @@ export const Header = () => {
   const handleSignOut = () => {
     dispatch(signOut());
     removeCookie("token");
-    navigation("/");
+    navigation("/login");
   };
 
   useEffect(() => {
