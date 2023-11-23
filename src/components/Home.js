@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
@@ -11,6 +12,7 @@ const Home = () => {
   const [lists, setLists] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
+  const navigation = useNavigate();
   const pageNumber = useSelector((state) => state.pageCounter.pageNumber);
   const listsPerPage = 10;
 
@@ -36,6 +38,9 @@ const Home = () => {
     <div>
       <Header />
       <div className="home">
+        <button onClick={() => navigation("/new")} className="new-button">
+          新規投稿
+        </button>
         {lists.map((list) => (
           <div key={list.id} className="overview">
             <h2 className="title">{list.title}</h2>
