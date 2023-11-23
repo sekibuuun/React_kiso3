@@ -6,6 +6,7 @@ import { LogIn } from "../components/LogIn";
 import { Home } from "../components/Home";
 import { Root } from "../components/Root";
 import { EditProfile } from "../components/EditProfile";
+import { New } from "../components/New";
 
 export const Router = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
@@ -19,6 +20,7 @@ export const Router = () => {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<EditProfile />} />
+            <Route path="/new" element={<New />} />
           </>
         ) : (
           <Route path="/" element={<Root />} />

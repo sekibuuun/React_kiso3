@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+$red: #ff3333;
+$blue: #242f9b;
+$white: #ffffff;
+$grey: #555555;
+
+.new {
+  width: 500px;
+  margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  .error-message {
+    color: $red;
+  }
+
+  .new-form {
+    margin: 25px 0;
+    span {
+      color: $red;
+    }
+
+    .title-label,
+    .url-label,
+    .detail-label,
+    .review-label {
+      color: $grey;
+    }
+
+    .title-input,
+    .url-input,
+    .detail-input,
+    .review-input {
+      width: 100%;
+      font-size: large;
+      height: 30px;
+      margin-bottom: 25px;
+    }
+
+    .submit-button {
+      background-color: $blue;
+      color: $white;
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      border: none;
+    }
+  }
+}
