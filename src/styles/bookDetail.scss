@@ -1,0 +1,15 @@
+.error {
+  color: red;
+}
+
+.book-detail {
+  margin: 10px 0px 30px 20px;
+  .title {
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+  .url-container {
+    display: flex;
+    margin-bottom: 20px;
+  }
+}

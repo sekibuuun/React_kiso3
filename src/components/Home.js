@@ -34,6 +34,27 @@ const Home = () => {
       });
   }, [pageNumber]);
 
+  const sendLog = (selectedId) => {
+    const data = {
+      selectBookId: selectedId,
+    };
+    console.log(selectedId);
+    axios
+      .post(`${url}/logs`, data, {
+        headers: {
+          authorization: `Bearer ${cookies.token}`,
+        },
+      })
+      .then((res) => {
+        navigation(`/detail/${selectedId}`);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrorMessage(`リストの取得に失敗しました。${err}`);
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -43,7 +64,11 @@ const Home = () => {
         </button>
         {lists.map((list) => (
           <div key={list.id} className="overview">
-            <h2 className="title">{list.title}</h2>
+            <div className="title-container">
+              <h2 onClick={() => sendLog(list.id)} className="title">
+                {list.title}
+              </h2>
+            </div>
             <div className="url-container">
               <div className="url-title">URL：</div>
               <a href={list.url} className="url">
