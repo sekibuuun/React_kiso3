@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { url } from "../const";
 import { Loading } from "./Loading";
 import { useCookies } from "react-cookie";
@@ -12,6 +13,7 @@ const BookDetail = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [cookies] = useCookies();
+  const navigation = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -50,6 +52,9 @@ const BookDetail = () => {
         <p>レビュワー: {book.reviewer}</p>
         <p>レビュー: {book.review}</p>
       </div>
+      <button className="review-edit" onClick={() => navigation(`/edit/${id}`)}>
+        編集
+      </button>
     </div>
   );
 };

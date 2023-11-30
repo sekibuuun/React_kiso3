@@ -20,13 +20,6 @@ const New = () => {
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleReviewChange = (e) => setReview(e.target.value);
 
-  const data = {
-    title: title,
-    url: detailurl,
-    detail: detail,
-    review: review,
-  };
-
   const {
     register,
     handleSubmit,
@@ -35,6 +28,12 @@ const New = () => {
   } = useForm();
 
   const Post = () => {
+    const data = {
+      title: title,
+      url: detailurl,
+      detail: detail,
+      review: review,
+    };
     axios
       .post(`${url}/books`, data, {
         headers: {

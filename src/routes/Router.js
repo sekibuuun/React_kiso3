@@ -7,6 +7,7 @@ import { Home } from "../components/Home";
 import { Root } from "../components/Root";
 import { EditProfile } from "../components/EditProfile";
 import { BookDetail } from "../components/BookDetail";
+import { BookEdit } from "../components/BookEdit";
 import { New } from "../components/New";
 
 export const Router = () => {
@@ -23,6 +24,7 @@ export const Router = () => {
             <Route path="/profile" element={<EditProfile />} />
             <Route path="/new" element={<New />} />
             <Route path="/detail/:id" element={<BookDetail />} />
+            <Route path="/edit/:id" element={<BookEdit />} />
           </>
         ) : (
           <Route path="/" element={<Root />} />
