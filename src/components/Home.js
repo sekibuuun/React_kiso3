@@ -38,7 +38,6 @@ const Home = () => {
     const data = {
       selectBookId: selectedId,
     };
-    console.log(selectedId);
     axios
       .post(`${url}/logs`, data, {
         headers: {
@@ -47,10 +46,8 @@ const Home = () => {
       })
       .then((res) => {
         navigation(`/detail/${selectedId}`);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err);
         setErrorMessage(`リストの取得に失敗しました。${err}`);
       });
   };

@@ -52,9 +52,14 @@ const BookDetail = () => {
         <p>レビュワー: {book.reviewer}</p>
         <p>レビュー: {book.review}</p>
       </div>
-      <button className="review-edit" onClick={() => navigation(`/edit/${id}`)}>
-        編集
-      </button>
+      {book.isMine ? (
+        <button
+          className="review-edit"
+          onClick={() => navigation(`/edit/${id}`)}
+        >
+          編集
+        </button>
+      ) : undefined}
     </div>
   );
 };

@@ -50,14 +50,9 @@ const SignUp = () => {
     });
   };
 
-  const onSignUp = () => {
-    const data = {
-      name: name,
-      email: email,
-      password: password,
-    };
+  const onSignUp = (test) => {
     axios
-      .post(`${url}/users`, data)
+      .post(`${url}/users`, test)
       .then((res) => {
         const token = res.data.token;
         const headers = {
@@ -77,7 +72,7 @@ const SignUp = () => {
       });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (test) => {
     onSignUp();
     reset();
   };

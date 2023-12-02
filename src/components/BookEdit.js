@@ -43,7 +43,6 @@ const BookEdit = () => {
         },
       })
       .then(() => {
-        console.log(book);
         navigation("/home");
       })
       .catch((err) => {
